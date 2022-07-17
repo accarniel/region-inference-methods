@@ -38,41 +38,21 @@ fsi_evaluation <- function(fsi, qw, approach, ...) {
     if(approach=="discretization") {
       k <- args_function[["k"]]
 
-      start_time <- Sys.time()
+      print(paste0("Executing the discretization method with k = ", k))
       result <- fsi_qw_eval(fsi, target_lval = "great", qw, approach = "discretization", k = k)
-      end_time <- Sys.time()
-
-      total_test_time = difftime(end_time, start_time, units="s")
-
-      df_results_metrics <- tibble(k = k,
-                                   start_time = start_time,
-                                   end_time = end_time,
-                                   elapsed_time = total_test_time)
-
+      print("Completed execution")
     } else if(approach=="optimization"){
 
       max_depth <- args_function[["max_depth"]]
       maxit <- args_function[["maxit"]]
       population <- args_function[["population"]]
 
-      start_time <- Sys.time()
+      print(paste0("Executing the optimization method with max_depth = ", max_depth))
       result <- fsi_qw_eval(fsi, qw, approach = "pso",
                             max_depth = max_depth, maxit = maxit,
                             population = population)
-      end_time <- Sys.time()
-
-      total_test_time = difftime(end_time, start_time, units="s")
-
-      df_results_metrics <- tibble(max_depth = max_depth,
-                                   maxit = maxit,
-                                   population = population,
-                                   start_time = start_time,
-                                   end_time = end_time,
-                                   elapsed_time = total_test_time)
+      print("Completed execution")
     }
-
-    print(paste0("Time Stats for ", approach, " evaluation."))
-    print(df_results_metrics)
 
     formatted_result <- cbind(st_coordinates(result$points), result$inferred_values)
     colnames(formatted_result) <- c("x", "y", "inferred_value")

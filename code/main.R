@@ -1,14 +1,21 @@
 load_required_packages <- function(x) {
   for(i in x){
-    if(!require(i, character.only = TRUE)){
-      install.packages(i, dependencies = TRUE)
+    if(!require(i, character.only = TRUE)) {
+      # we are working on the next version of the fsr that would be not compatible with this code (i.e., with the .rds files)
+      # thus, please make sure that you will use the correct version indicated below
+      if(i == "fsr") {
+        print("Make sure that you are installing the version 1.0.2 of the package fsr")
+        remotes::install_version("fsr", "1.0.2", dependencies = TRUE)
+      } else {
+        install.packages(i, dependencies = TRUE)
+      }
       require(i, character.only = TRUE)
     }
   }
 }
 
 # First, we need to install/load all required packages
-load_required_packages(c("this.path", "readr", "tibble", "dplyr", "sf", "fsr", "ggplot2", "FuzzyR"))
+load_required_packages(c("this.path", "readr", "tibble", "dplyr", "sf", "fsr", "ggplot2", "stringr", "FuzzyR"))
 
 current_dir <- this.path::this.dir()
 # Loading needed underlying functions
