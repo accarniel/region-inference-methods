@@ -16,4 +16,4 @@ To implement the running example and, consequently, our comparative analysis, we
 
 # How to use?
 
-An adapted version of this project is also publicly available in Code Ocean. In the version available in Code Ocean, we have decreased the number of windows and other values in the comparative analysis (as commented in the code of the capsule) so that you can see how it works in a short, simple run. Furthermore, we have included the original results obtained in our comparative analysis; thus, you can generate the same figures as the figures included in the comparative analysis discussed in the paper.
+An adapted version of this project is also publicly available in Code Ocean - https://codeocean.com/capsule/1662797/tree/v1. In the version available in Code Ocean, we have decreased the number of windows and other values in the comparative analysis (as commented in the code of the capsule) so that you can see how it works in a short, simple run. Furthermore, we have included the original results obtained in our comparative analysis; thus, you can generate the same figures as the figures included in the comparative analysis discussed in the paper.
